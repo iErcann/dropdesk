@@ -53,9 +53,9 @@ Right-click the desktop for the menu (terminal, browser).
 
 | Env | Default | |
 |---|---|---|
-| `RESOLUTION` | `1920x1080` | screen size |
+| `RESOLUTION` | `1280x720` | screen size |
 
-Docker: `-e RESOLUTION=1280x720`. Proxmox: in the container's environment variables.
+Docker: `-e RESOLUTION=1920x1080`. Proxmox: in the container's environment variables.
 
 ## Security
 
