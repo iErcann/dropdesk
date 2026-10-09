@@ -1,13 +1,14 @@
 # dropdesk
 
-Tiny Linux desktop in your browser. Drop it into Proxmox (LXC) or Docker.
+Tiny Linux desktop in your browser. Drop it into Docker or Proxmox (LXC).
 
-Includes [Xvfb](https://linux.die.net/man/1/xvfb), Fluxbox, x11vnc, noVNC and xterm.
+## Docker
 
+```sh
+docker run -d --name dropdesk -p 6080:6080 ghcr.io/iercann/dropdesk
 ```
-Xvfb  ->  fluxbox  ->  x11vnc  ->  websockify + noVNC  ->  your browser
-(screen)  (windows)    (stream it)  (make it web-friendly)
-```
+
+Open <http://localhost:6080>. Right-click the desktop for the menu.
 
 ## Images
 
@@ -25,29 +26,6 @@ For amd64 and arm64.
 2. Reference `ghcr.io/iercann/dropdesk`, tag `latest` (or `firefox` / `chromium`)
 3. Create CT, pick the image as template, network on DHCP
 4. Start it and open `http://<container-ip>:6080`
-
-## Docker
-
-```sh
-docker run -d --name dropdesk -p 6080:6080 ghcr.io/iercann/dropdesk
-```
-
-Open <http://localhost:6080>
-
-Or with compose:
-
-```yaml
-services:
-  dropdesk:
-    image: ghcr.io/iercann/dropdesk:firefox
-    ports:
-      - "6080:6080"
-    restart: unless-stopped
-```
-
-## Usage
-
-Right-click the desktop for the menu (terminal, browser).
 
 ## Settings
 
@@ -78,9 +56,12 @@ docker build -t my-desk --build-arg EXTRA_PACKAGES="gimp vlc" .
 **Browser tabs crash in Docker?**
 Docker's `/dev/shm` is only 64MB. Add `--shm-size=1g`.
 
-## Build
+## How it works
 
-```sh
-docker build -t dropdesk .
-docker build -t dropdesk:firefox --build-arg EXTRA_PACKAGES=firefox-esr .
 ```
+Xvfb  ->  fluxbox  ->  x11vnc  ->  websockify + noVNC  ->  your browser
+(screen)  (windows)    (stream it)  (make it web-friendly)
+```
+
+[Xvfb](https://linux.die.net/man/1/xvfb) is a fake screen in memory, fluxbox manages the windows,
+x11vnc streams the screen over VNC, websockify + noVNC make it work in a browser.
