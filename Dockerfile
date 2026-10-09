@@ -12,10 +12,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     $EXTRA_PACKAGES \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf \
-    # drop unused stuff (~270MB): 3d rendering (llvm/mesa), numpy, ghostscript + fonts, docs
+    # drop unused stuff (~310MB): 3d rendering (llvm/mesa), numpy, wallpaper formats (ghostscript, svg, heif...), tcl/tk, docs
     /usr/lib/*/libLLVM* /usr/lib/*/libgallium* /usr/lib/*/libz3* \
-    /usr/lib/python3/dist-packages/numpy \
-    /usr/lib/*/libgs.so* /usr/share/fonts/*/urw-base35 /usr/share/fonts/cmap /usr/share/fonts/cMap /usr/share/poppler \
+    /usr/lib/python3/dist-packages/numpy /usr/lib/*/lapack /usr/lib/*/blas /usr/lib/*/libgfortran* \
+    /usr/lib/*/libgs.so* /usr/share/ghostscript /usr/share/fonts/*/urw-base35 /usr/share/fonts/X11/Type1 \
+    /usr/share/fonts/cmap /usr/share/fonts/cMap /usr/share/poppler \
+    /usr/lib/*/imlib2/loaders/heif.so /usr/lib/*/imlib2/loaders/jxl.so /usr/lib/*/imlib2/loaders/svg.so \
+    /usr/lib/*/imlib2/loaders/ps.so /usr/lib/*/imlib2/loaders/j2k.so \
+    /usr/lib/*/libheif* /usr/lib/*/libjxl* /usr/lib/*/libhwy* /usr/lib/*/libspectre* \
+    /usr/lib/*/libtcl* /usr/lib/*/libtk* /usr/share/tcltk \
     /usr/share/doc
 
 # chromium won't start as root without --no-sandbox
