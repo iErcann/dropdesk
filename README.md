@@ -1,6 +1,6 @@
 # dropdesk
 
-Linux desktop in your browser with Docker.
+Drop a Linux desktop anywhere Docker runs.
 
 ![dropdesk](image.png)
 
