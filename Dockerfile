@@ -10,7 +10,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     websockify \
     xterm \
     $EXTRA_PACKAGES \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf \
+    # drop unused stuff (~270MB): 3d rendering (llvm/mesa), numpy, ghostscript + fonts, docs
+    /usr/lib/*/libLLVM* /usr/lib/*/libgallium* /usr/lib/*/libz3* \
+    /usr/lib/python3/dist-packages/numpy \
+    /usr/lib/*/libgs.so* /usr/share/fonts/*/urw-base35 /usr/share/fonts/cmap /usr/share/fonts/cMap /usr/share/poppler \
+    /usr/share/doc
 
 # chromium won't start as root without --no-sandbox
 RUN if [ -d /etc/chromium.d ]; then \
