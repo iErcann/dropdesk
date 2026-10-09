@@ -3,7 +3,7 @@
 # leftovers from a previous run (restart / reboot) block xvfb from starting
 rm -f /tmp/.X0-lock /tmp/.X11-unix/X0
 
-Xvfb :0 -screen 0 1920x1080x24 & # background fake monitor (memory).
+Xvfb :0 -screen 0 "${RESOLUTION:-1920x1080}x24" & # background fake monitor (memory).
 while [ ! -e /tmp/.X11-unix/X0 ]; do sleep 0.1; done 
 
 fluxbox & 
