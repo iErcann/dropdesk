@@ -26,6 +26,8 @@ RUN if [ -d /etc/chromium.d ]; then \
 COPY fluxbox-menu /root/.fluxbox/menu
 RUN command -v x-www-browser >/dev/null || sed -i '/x-www-browser/d' /root/.fluxbox/menu
 
+RUN ln -sf /bin/true /usr/bin/fbsetbg
+
 # github = smaller than apt.
 ADD https://github.com/novnc/noVNC.git#v1.7.0 /usr/share/novnc
 
