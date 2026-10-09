@@ -5,10 +5,12 @@ Linux desktop in your browser with Docker.
 ## Docker
 
 ```sh
-docker run -d --name dropdesk -p 6080:6080 ghcr.io/iercann/dropdesk
+docker run -d --name dropdesk -p 127.0.0.1:6080:6080 ghcr.io/iercann/dropdesk
 ```
 
 Open <http://localhost:6080>. Right-click the desktop for the menu.
+
+Only your machine can reach it. To open it to your LAN, use `-p 6080:6080` (see [Security](#security)).
 
 ## Images
 
@@ -27,6 +29,8 @@ For amd64 and arm64.
 3. Create CT, pick the image as template, network on DHCP
 4. Start it and open `http://<container-ip>:6080`
 
+Heads up, the container gets its own IP, so anyone on your LAN can open it too.
+
 ## Settings
 
 | Env | Default | |
@@ -37,8 +41,8 @@ Docker: `-e RESOLUTION=1920x1080`. Proxmox: in the container's environment varia
 
 ## Security
 
-No password. Anyone who can reach port 6080 gets the desktop.
-Keep it on your LAN, don't port forward it.
+There's no password. Whoever can reach port 6080 gets the desktop (as root).
+Fine on your machine or LAN, but don't put it on a VPS with `-p 6080:6080` ([ufw won't block it](https://docs.docker.com/engine/network/packet-filtering-firewalls/#docker-and-ufw)).
 
 ## FAQ
 
