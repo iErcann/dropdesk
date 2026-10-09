@@ -2,11 +2,11 @@
 
 X11 desktop in Docker, viewable in the browser via noVNC.
 
-Includes Xvfb, Fluxbox, x11vnc, noVNC and xterm.
+Includes [Xvfb](https://linux.die.net/man/1/xvfb), Fluxbox, x11vnc, noVNC and xterm.
 
 ```
-Xvfb  →  fluxbox  →  x11vnc  →  websockify + noVNC  →  your browser
-(screen)  (windows)   (stream it)   (make it web-friendly)
+Xvfb  ->  fluxbox  ->  x11vnc  ->  websockify + noVNC  ->  your browser
+(screen)  (windows)    (stream it)  (make it web-friendly)
 ```
 
 ## Build

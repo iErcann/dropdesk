@@ -1,4 +1,4 @@
-FROM debian:trixie
+FROM debian:trixie-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     xvfb \
@@ -7,13 +7,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     novnc \
     websockify \
     xterm \
-    firefox-esr \
     && rm -rf /var/lib/apt/lists/*
 
 ENV DISPLAY=:0
-ENV HOME=/root
 
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+COPY --chmod=755 start.sh /start.sh
 
 CMD ["/start.sh"]
