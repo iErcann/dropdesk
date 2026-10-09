@@ -2,6 +2,8 @@
 
 Linux desktop in your browser with Docker.
 
+![dropdesk](image.png)
+
 ## Docker
 
 ```sh
@@ -9,6 +11,8 @@ docker run -d --name dropdesk -p 127.0.0.1:6080:6080 ghcr.io/iercann/dropdesk
 ```
 
 Open <http://localhost:6080>. Right-click the desktop for the menu.
+
+![menu](menu.png)
 
 Only your machine can reach it. To open it to your LAN, use `-p 6080:6080` (see [Security](#security)).
 
