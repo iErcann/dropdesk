@@ -9,6 +9,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     xterm \
     && rm -rf /var/lib/apt/lists/*
 
+# open the desktop directly 
+RUN ln -s vnc.html /usr/share/novnc/index.html \
+    && echo '{"autoconnect": true, "resize": "scale", "reconnect": true}' > /usr/share/novnc/defaults.json
+
 ENV DISPLAY=:0
 
 COPY --chmod=755 start.sh /start.sh
