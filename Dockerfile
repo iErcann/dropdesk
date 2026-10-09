@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     xvfb \
     fluxbox \
     x11vnc \
-    novnc \
     websockify \
     xterm \
     $EXTRA_PACKAGES \
@@ -20,6 +19,9 @@ RUN if [ -d /etc/chromium.d ]; then \
 
 COPY fluxbox-menu /root/.fluxbox/menu
 RUN command -v x-www-browser >/dev/null || sed -i '/x-www-browser/d' /root/.fluxbox/menu
+
+# github = smaller than apt.
+ADD https://github.com/novnc/noVNC.git#v1.6.0 /usr/share/novnc
 
 # open the desktop directly 
 RUN ln -s vnc.html /usr/share/novnc/index.html \
