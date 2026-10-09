@@ -1,0 +1,6 @@
+[begin] (dropdesk)
+  [exec] (Terminal) {xterm}
+  [exec] (Web browser) {x-www-browser}
+  [separator]
+  [include] (/etc/X11/fluxbox/fluxbox-menu)
+[end]
