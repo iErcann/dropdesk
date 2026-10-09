@@ -33,7 +33,7 @@ For amd64 and arm64.
 3. Create CT, pick the image as template, network on DHCP
 4. Start it and open `http://<container-ip>:6080`
 
-Heads up, the container gets its own IP, so anyone on your LAN can open it too.
+Anyone on your LAN can open it (it gets its own IP). See [Security](#security).
 
 ## Settings
 
