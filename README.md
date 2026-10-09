@@ -1,6 +1,6 @@
 # dropdesk
 
-Tiny Linux desktop in your browser. Drop it into Docker or Proxmox (LXC).
+Linux desktop in your browser with Docker.
 
 ## Docker
 
