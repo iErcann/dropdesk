@@ -51,10 +51,13 @@ Fine on your machine or LAN, but don't put it on a VPS with `-p 6080:6080` ([ufw
 ## FAQ
 
 **Where are my files?**
+
 Docker: gone when you remove the container, keep them with `-v dropdesk-home:/root`.
+
 Proxmox: the container disk keeps them.
 
 **How do I add apps?**
+
 `apt update && apt install <app>` in the terminal, or build your own image:
 
 ```sh
@@ -62,6 +65,7 @@ docker build -t my-desk --build-arg EXTRA_PACKAGES="gimp vlc" .
 ```
 
 **Browser tabs crash in Docker?**
+
 Docker's `/dev/shm` is only 64MB. Add `--shm-size=1g`.
 
 ## How it works

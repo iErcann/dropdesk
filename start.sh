@@ -11,6 +11,7 @@ fluxbox &
 # default port :5900
 x11vnc \
   -display :0 \
+  -localhost \
   -forever \
   -shared \
   -nopw &
